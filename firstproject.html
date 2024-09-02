@@ -7,7 +7,7 @@
 </head>
 <style>
     body{
-        background: #000;
+        background: #274a72;
         color: white;
         text-align: center;
         justify-content: center;
@@ -19,21 +19,28 @@
     .btn{
         margin: 11px;
         border-radius: 5px; 
+        font-size: 40px;
     }
     .box{
         background: #5c5b5b;
         border-radius: 12px;
-        height: 190px;
+        height: 350px;
+        width: 500px;
+        border-color: aqua;
     }
     .heading{
         margin: 0%;
         padding: 0%;
+        font-size: 60px;
+        padding-top: 10px;
         padding-left: 20px;
         padding-right: 20px;
     }
 
     #input{
-        margin-top: -25px;
+        margin-top: 20px;
+        height: 25px;
+        width: 280px;
     }
     .color{
       color: black;
@@ -44,30 +51,29 @@
         margin: 0;
         padding: 0;
         margin-top: 8px;
+        font-size: 40px;
     }
-    @keyframes win-animation {
-    0% { transform: scale(1); opacity: 0; }
-    50% { transform: scale(1.5); opacity: 1; }
-    100% { transform: scale(1); opacity: 0; }
-}
 
 .win {
-    font-size: 2rem;
+
     color: rgb(0, 255, 13);
-    animation: win-animation 2s ease-in-out;
+  
 }
 .Lost {
-    font-size: 2rem;
-    color: rgb(255, 0, 0);
-    animation: win-animation 2s ease-in-out;
+
+    color: rgb(226, 226, 226);
+
+}
+#score{
+    font-size: 30px;
 }
 </style>
 <body>
     <div class="box">
-    <h1 class="heading">Guss the <span class="color">number</span></h1><br>
+    <h1 class="heading" id="head">Guss the <span class="color">number</span></h1><br>
     <input id="input">     <br>
-     <p  id="para">You are  </p>
-    <button class="btn"onclick="Check()" id="checkbtn">Check!</button><br>
+     <p  id="para"></p>
+    <button class="btn"onclick="Check()" id="checkbtn">Check</button><br>
     <p id="score">Score:3</p>
 </div>
 
@@ -78,18 +84,21 @@
     var score = document.getElementById("score");
     var button=document.getElementById("checkbtn")
     var totalscore = 3;
+    var heading = document.getElementById("head");
 
     function Check(){
 
         var numberentered = gussnumber.value
         if (randomNumber==numberentered){
             console.log("You are Right!");
-            guess.textContent="You are correct";
+            guess.textContent="You Won";
             alert("You won");
             guess.classList.add("win");
             button.hidden = true;
+            gussnumber.hidden = true;
             totalscore.hidden = true;
             score.hidden = true;
+            heading.hidden = true;
         }
         else{
             totalscore = totalscore-1;
@@ -109,6 +118,8 @@
         guess.classList.add("Lost");
         button.hidden = true;
         score.hidden = true;
+        heading.hidden = true;
+        gussnumber.hidden = true;
     }
 
 </script>
